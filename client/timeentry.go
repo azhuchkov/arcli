@@ -18,7 +18,7 @@ type TimeEntry struct {
 	Issue     entityID  `json:"issue"`
 	User      entity    `json:"user"`
 	Activity  entity    `json:"activity"`
-	Hours     float64   `json:"hours"`
+	Hours     string    `json:"hours"`
 	Comments  string    `json:"comments"`
 	SpentOn   DateTime  `json:"spent_on"`
 	CreatedOn time.Time `json:"created_on"`

@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 	"strings"
+    "strconv"
 )
 
 func newStatusCmd() *cobra.Command {
@@ -94,7 +95,9 @@ func getDataForPeriod(spentOn timeSpentOn) (periodData, error) {
 	projects := make(map[int64]struct{})
 
 	for _, entry := range entries {
-		hoursSum += entry.Hours
+        if hours, err := strconv.ParseFloat(entry.Hours, 64); err == nil {
+		    hoursSum += hours
+        }
 		issues[entry.Issue.ID] = struct{}{}
 		projects[entry.Project.ID] = struct{}{}
 	}
